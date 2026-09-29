@@ -1,0 +1,46 @@
+[project]
+name = "axon"
+version = "0.1.0"
+description = "AXON — Agentic visual inspection. Perception that acts."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = { text = "MIT" }
+authors = [{ name = "Shaik Karimunnisa" }]
+
+dependencies = [
+    "opencv-python>=5.0.0",
+    "numpy>=1.26.4",
+    "pillow>=10.4.0",
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "python-multipart>=0.0.9",
+    "pydantic>=2.8.0",
+    "python-dotenv>=1.0.1",
+    "rich>=13.7.0",
+    "typer>=0.12.0",
+]
+
+[project.optional-dependencies]
+agent = [
+    "google-generativeai>=0.8.0",
+    "httpx>=0.27.0",
+]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.6.0",
+]
+
+[project.scripts]
+axon-demo = "scripts.run_local_demo:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["axon*", "scripts*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
